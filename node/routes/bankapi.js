@@ -1,11 +1,12 @@
 const express = require('express');
+const db = require('../services/db');
 const router = express.Router();
-const programmingLanguages = require('../services/bankapi');
 
 /* GET programming languages. */
 router.get('/', async function(req, res, next) {
   try {
-    res.json(await programmingLanguages.getMultiple(req.query.page));
+    const rows = await db.query("SELECT * FROM clients");
+    res.json(rows);
   } catch (err) {
     console.error(`Error while getting programming languages `, err.message);
     next(err);
