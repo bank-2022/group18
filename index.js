@@ -7,6 +7,9 @@ const bankapiRouterCards = require("./routes/cards");
 const bankapiRouterAccount = require("./routes/accounts");
 const bankapiRouterActions = require("./routes/transactions");
 
+var hash = bcrypt.hashSync("1221", bcrypt.genSaltSync(10));
+console.log("Has for PIN 1221 is: ", hash);
+
 app.use(express.json());
 app.use(
   express.urlencoded({
