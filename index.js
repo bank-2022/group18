@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+
 const bcrypt = require('bcryptjs');
+const db = require('./services/db');
+
 const bankapiRouter = require("./routes/clients");
 const bankapiRouterCards = require("./routes/cards");
 const bankapiRouterAccount = require("./routes/accounts");
@@ -21,8 +24,21 @@ app.get("/", (req, res) => {
   res.json({ message: "ok" });
 });
 
-app.use("/clients", bankapiRouter);
-app.use("/clients/:id", bankapiRouter);
+app.get('/clients', async function(req, res) {
+  try {
+    res.json(await db.query(`SELECT clientID, clientName, clientAddress, clientPhone FROM clients;`));
+  } catch (err) {
+    console.error(`Error while getting Client data `, err.message);
+  }
+});
+
+app.use("/clients/:id", async function(req, res) {
+  try {
+    res.json(await db.query(`SELECT clientName FROM clients WHERE clientID=${req.params.id};`));
+  } catch (err) {
+    console.error(`Error while getting Client data `, err.message);
+  }
+});
 
 app.use("/cards", bankapiRouterCards);
 app.use("/cards/:id", bankapiRouterCards);
