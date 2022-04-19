@@ -84,6 +84,16 @@ app.get("/transactions/:id", async function(req, res) {
     console.error(`Error while getting Transaction data: `, err.message);
   }
 });
+//POST
+app.post("/transactions/new", async function(req, res) {
+  try {
+    var data = req.body;
+    res.json(await db.query(`INSERT INTO transactions (accountID, cardID, timestamp, action, amount) VALUES (${data.accountID},${data.cardID},NOW(),${data.action},${data.amount});`));
+  } catch (err) {
+    console.error(`Error while creating new Transaction data: `, err.message);
+  }
+});
+
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
