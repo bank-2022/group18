@@ -49,7 +49,7 @@ app.get("/cards/:id", async function(req, res) {
   try {
     res.json(await db.query(`SELECT cardPin, accountID FROM cards WHERE cardID=${req.params.id};`));
   } catch (err) {
-    console.error(`Error while getting Client data: `, err.message);
+    console.error(`Error while getting Card data: `, err.message);
   }
 });
 
