@@ -69,6 +69,16 @@ app.get("/accounts/:id", async function(req, res) {
   }
 });
 
+//Täh. Tietoturva???? Mitä se on?
+app.put("/accounts/update", async function(req, res) {
+  try {
+    var data = req.body;
+    res.json(await db.query(`UPDATE accounts SET balance=${data.balance} WHERE accountID=${data.accountID};`));
+  } catch (err) {
+    console.error(`Error while creating new Transaction data: `, err.message);
+  }
+});
+
 //Transactions
 app.get("/transactions", async function(req, res) {
   try {
