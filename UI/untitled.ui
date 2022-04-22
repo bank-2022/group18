@@ -73,8 +73,6 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="../../../../../home/nikkedoy98/Desktop/Test/test.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
