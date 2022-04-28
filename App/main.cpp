@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "card.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    MainWindow w;
+    Card w;
     w.show();
     return a.exec();
 }

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'mainwindow.ui'
+** Form generated from reading UI file 'cardi.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_MAINWINDOW_H
-#define UI_MAINWINDOW_H
+#ifndef UI_CARDI_H
+#define UI_CARDI_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -15,12 +15,11 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainWindow
+class Ui_Card
 {
 public:
     QWidget *centralwidget;
@@ -29,16 +28,15 @@ public:
     QLabel *label;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
-    QStatusBar *statusbar;
 
-    void setupUi(QMainWindow *MainWindow)
+    void setupUi(QMainWindow *Card)
     {
-        if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(482, 172);
-        MainWindow->setMinimumSize(QSize(482, 172));
-        MainWindow->setMaximumSize(QSize(482, 172));
-        centralwidget = new QWidget(MainWindow);
+        if (Card->objectName().isEmpty())
+            Card->setObjectName(QString::fromUtf8("Card"));
+        Card->resize(482, 172);
+        Card->setMinimumSize(QSize(482, 172));
+        Card->setMaximumSize(QSize(482, 172));
+        centralwidget = new QWidget(Card);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
@@ -64,31 +62,28 @@ public:
 
         gridLayout->addWidget(pushButton_2, 1, 1, 1, 1);
 
-        MainWindow->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
+        Card->setCentralWidget(centralwidget);
 
-        retranslateUi(MainWindow);
-        QObject::connect(pushButton, SIGNAL(clicked()), MainWindow, SLOT(funfun()));
+        retranslateUi(Card);
+        QObject::connect(pushButton, SIGNAL(clicked()), Card, SLOT(funfun()));
 
-        QMetaObject::connectSlotsByName(MainWindow);
+        QMetaObject::connectSlotsByName(Card);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindow)
+    void retranslateUi(QMainWindow *Card)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Bank System", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Sy\303\266t\303\244 kortti:", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "OK", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "En", nullptr));
+        Card->setWindowTitle(QCoreApplication::translate("Card", "Bank System", nullptr));
+        label->setText(QCoreApplication::translate("Card", "Sy\303\266t\303\244 kortti:", nullptr));
+        pushButton->setText(QCoreApplication::translate("Card", "OK", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Card", "En", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class MainWindow: public Ui_MainWindow {};
+    class Card: public Ui_Card {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_MAINWINDOW_H
+#endif // UI_CARDI_H

@@ -52,13 +52,17 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../App/main.cpp \
-		../App/mainwindow.cpp qrc_qmake_qmake_qm_files.cpp \
-		moc_mainwindow.cpp
-OBJECTS       = main.o \
-		mainwindow.o \
+SOURCES       = ../App/card.cpp \
+		../App/main.cpp \
+		../App/pinwindow.cpp qrc_qmake_qmake_qm_files.cpp \
+		moc_card.cpp \
+		moc_pinwindow.cpp
+OBJECTS       = card.o \
+		main.o \
+		pinwindow.o \
 		qrc_qmake_qmake_qm_files.o \
-		moc_mainwindow.o
+		moc_card.o \
+		moc_pinwindow.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -265,6 +269,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
+		../App/.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -288,8 +293,10 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		../App/App.pro ../App/mainwindow.h ../App/main.cpp \
-		../App/mainwindow.cpp
+		../App/App.pro ../App/card.h \
+		../App/pinwindow.h ../App/card.cpp \
+		../App/main.cpp \
+		../App/pinwindow.cpp
 QMAKE_TARGET  = App
 DESTDIR       = 
 TARGET        = App
@@ -298,7 +305,7 @@ TARGET        = App
 first: all
 ####### Build rules
 
-App: ui_mainwindow.h $(OBJECTS)  
+App: ui_card.h ui_pinwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../App/App.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -507,6 +514,7 @@ Makefile: ../App/App.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -739,6 +747,7 @@ Makefile: ../App/App.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 /usr/lib/qt/mkspecs/features/qt_config.prf:
 /usr/lib/qt/mkspecs/linux-g++/qmake.conf:
 /usr/lib/qt/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/qt/mkspecs/features/exclusive_builds.prf:
 /usr/lib/qt/mkspecs/features/toolchain.prf:
 /usr/lib/qt/mkspecs/features/default_pre.prf:
@@ -781,9 +790,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents ../App/App_fi_FI.ts $(DISTDIR)/
 	$(COPY_FILE) --parents qmake_qmake_qm_files.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../App/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../App/main.cpp ../App/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../App/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../App/card.h ../App/pinwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../App/card.cpp ../App/main.cpp ../App/pinwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../App/card.ui ../App/pinwindow.ui $(DISTDIR)/
 	$(COPY_FILE) --parents ../App/App_fi_FI.ts $(DISTDIR)/
 
 
@@ -828,24 +837,33 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_card.cpp moc_pinwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
-moc_mainwindow.cpp: ../App/mainwindow.h \
+	-$(DEL_FILE) moc_card.cpp moc_pinwindow.cpp
+moc_card.cpp: ../App/card.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /media/Videopelit/Softadev/projects/group18/build-App-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/media/Videopelit/Softadev/projects/group18/App -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/11.2.0 -I/usr/include/c++/11.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed -I/usr/include ../App/mainwindow.h -o moc_mainwindow.cpp
+	/usr/bin/moc $(DEFINES) --include /media/Videopelit/Softadev/projects/group18/build-App-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/media/Videopelit/Softadev/projects/group18/App -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/11.2.0 -I/usr/include/c++/11.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed -I/usr/include ../App/card.h -o moc_card.cpp
+
+moc_pinwindow.cpp: ../App/pinwindow.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /media/Videopelit/Softadev/projects/group18/build-App-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/media/Videopelit/Softadev/projects/group18/App -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/11.2.0 -I/usr/include/c++/11.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed -I/usr/include ../App/pinwindow.h -o moc_pinwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_card.h ui_pinwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
-ui_mainwindow.h: ../App/mainwindow.ui \
+	-$(DEL_FILE) ui_card.h ui_pinwindow.h
+ui_card.h: ../App/card.ui \
 		/usr/bin/uic
-	/usr/bin/uic ../App/mainwindow.ui -o ui_mainwindow.h
+	/usr/bin/uic ../App/card.ui -o ui_card.h
+
+ui_pinwindow.h: ../App/pinwindow.ui \
+		/usr/bin/uic
+	/usr/bin/uic ../App/pinwindow.ui -o ui_pinwindow.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -857,18 +875,26 @@ compiler_clean: compiler_lrelease_clean compiler_rcc_clean compiler_moc_predefs_
 
 ####### Compile
 
-main.o: ../App/main.cpp ../App/mainwindow.h
+card.o: ../App/card.cpp ../App/card.h \
+		../App/pinwindow.h \
+		ui_card.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o card.o ../App/card.cpp
+
+main.o: ../App/main.cpp ../App/card.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../App/main.cpp
 
-mainwindow.o: ../App/mainwindow.cpp ../App/mainwindow.h \
-		ui_mainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../App/mainwindow.cpp
+pinwindow.o: ../App/pinwindow.cpp ../App/pinwindow.h \
+		ui_pinwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pinwindow.o ../App/pinwindow.cpp
 
 qrc_qmake_qmake_qm_files.o: qrc_qmake_qmake_qm_files.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_qmake_qmake_qm_files.o qrc_qmake_qmake_qm_files.cpp
 
-moc_mainwindow.o: moc_mainwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+moc_card.o: moc_card.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_card.o moc_card.cpp
+
+moc_pinwindow.o: moc_pinwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_pinwindow.o moc_pinwindow.cpp
 
 ####### Install
 
