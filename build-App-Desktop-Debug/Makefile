@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++1z -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../App -I. -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++
+INCPATH       = -I../App -I. -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = App1.0.0
 DISTDIR = /media/Videopelit/Softadev/projects/group18/build-App-Desktop-Debug/.tmp/App1.0.0
 LINK          = g++
 LFLAGS        = -fPIC
-LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Network.so /usr/lib/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -843,12 +843,12 @@ compiler_moc_header_clean:
 moc_card.cpp: ../App/card.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /media/Videopelit/Softadev/projects/group18/build-App-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/media/Videopelit/Softadev/projects/group18/App -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/11.2.0 -I/usr/include/c++/11.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed -I/usr/include ../App/card.h -o moc_card.cpp
+	/usr/bin/moc $(DEFINES) --include /media/Videopelit/Softadev/projects/group18/build-App-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/media/Videopelit/Softadev/projects/group18/App -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/11.2.0 -I/usr/include/c++/11.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed -I/usr/include ../App/card.h -o moc_card.cpp
 
 moc_pinwindow.cpp: ../App/pinwindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /media/Videopelit/Softadev/projects/group18/build-App-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/media/Videopelit/Softadev/projects/group18/App -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/11.2.0 -I/usr/include/c++/11.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed -I/usr/include ../App/pinwindow.h -o moc_pinwindow.cpp
+	/usr/bin/moc $(DEFINES) --include /media/Videopelit/Softadev/projects/group18/build-App-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/media/Videopelit/Softadev/projects/group18/App -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/11.2.0 -I/usr/include/c++/11.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed -I/usr/include ../App/pinwindow.h -o moc_pinwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -880,7 +880,8 @@ card.o: ../App/card.cpp ../App/card.h \
 		ui_card.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o card.o ../App/card.cpp
 
-main.o: ../App/main.cpp ../App/card.h
+main.o: ../App/main.cpp ../App/card.h \
+		../App/rest.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../App/main.cpp
 
 pinwindow.o: ../App/pinwindow.cpp ../App/pinwindow.h \
