@@ -1,0 +1,16 @@
+debug/card.o
+debug/main.o
+debug/mainmenu.o
+debug/nosto.o
+debug/pinwindow.o
+debug/saldo.o
+debug/tilitapahtumat.o
+debug/varmistus.o
+debug/qrc_qmake_qmake_qm_files.o
+debug/moc_card.o
+debug/moc_mainmenu.o
+debug/moc_nosto.o
+debug/moc_pinwindow.o
+debug/moc_saldo.o
+debug/moc_tilitapahtumat.o
+debug/moc_varmistus.o
