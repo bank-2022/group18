@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -21,8 +22,9 @@ QT_BEGIN_NAMESPACE
 class Ui_Saldo
 {
 public:
-    QMenuBar *menubar;
     QWidget *centralwidget;
+    QPushButton *takaisin2;
+    QMenuBar *menubar;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *Saldo)
@@ -30,12 +32,16 @@ public:
         if (Saldo->objectName().isEmpty())
             Saldo->setObjectName(QString::fromUtf8("Saldo"));
         Saldo->resize(800, 600);
-        menubar = new QMenuBar(Saldo);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        Saldo->setMenuBar(menubar);
         centralwidget = new QWidget(Saldo);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        takaisin2 = new QPushButton(centralwidget);
+        takaisin2->setObjectName(QString::fromUtf8("takaisin2"));
+        takaisin2->setGeometry(QRect(10, 10, 75, 24));
         Saldo->setCentralWidget(centralwidget);
+        menubar = new QMenuBar(Saldo);
+        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setGeometry(QRect(0, 0, 800, 22));
+        Saldo->setMenuBar(menubar);
         statusbar = new QStatusBar(Saldo);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         Saldo->setStatusBar(statusbar);
@@ -48,6 +54,7 @@ public:
     void retranslateUi(QMainWindow *Saldo)
     {
         Saldo->setWindowTitle(QCoreApplication::translate("Saldo", "MainWindow", nullptr));
+        takaisin2->setText(QCoreApplication::translate("Saldo", "Takaisin", nullptr));
     } // retranslateUi
 
 };

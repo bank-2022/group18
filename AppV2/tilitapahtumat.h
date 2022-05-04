@@ -15,6 +15,9 @@ public:
     explicit Tilitapahtumat(QWidget *parent = nullptr);
     ~Tilitapahtumat();
 
+private slots:
+    void on_takaisin_clicked();
+
 private:
     Ui::Tilitapahtumat *ui;
 };

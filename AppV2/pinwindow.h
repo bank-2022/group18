@@ -17,7 +17,7 @@ class PinWindow : public QMainWindow
 public:
     PinWindow(QWidget *parent = nullptr);
     ~PinWindow();
-    bool restIsPinCorrect(QString id, QString pin);
+    //bool restIsPinCorrect(QString id, QString pin);
 
 private slots:
     void numberPressed();
@@ -28,13 +28,15 @@ private slots:
 
     void on_takaisin_clicked();
 
-    void doShit(QNetworkReply *raplu);
+    //void doShit(QNetworkReply *raplu);
+
+    //void pinOK();
 
 private:
     Ui::PinWindow *ui;
-    QNetworkAccessManager *getManager;
-    QNetworkReply *raplu;
-    QByteArray response_data;
+    //QNetworkAccessManager *getManager;
+    //QNetworkReply *raplu;
+    //QByteArray response_data;
 
 };
 #endif // PINWINDOW_H

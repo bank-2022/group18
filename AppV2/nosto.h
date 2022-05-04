@@ -15,6 +15,9 @@ public:
     explicit Nosto(QWidget *parent = nullptr);
     ~Nosto();
 
+private slots:
+    void on_takaisin_clicked();
+
 private:
     Ui::Nosto *ui;
 };

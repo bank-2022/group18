@@ -65,29 +65,33 @@ void PinWindow::on_takaisin_clicked()
 
 void PinWindow::on_ok_clicked()
 {
-    /*MainMenu *mmain = new MainMenu();
+    MainMenu *mmain = new MainMenu();
     mmain->show();
-    this->close();*/
-}
+    this->close();
 
+}
+/*
 bool PinWindow::restIsPinCorrect(QString id, QString pin) {
 
     QString site_url="http://localhost:3000/clients/" + id;
 
     qDebug() << site_url;
-
+    if (pin == true){
     QNetworkRequest request((site_url));
     getManager = new QNetworkAccessManager(this);
     connect(getManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(doShit(QNetworkReply*)));
     raplu = getManager->get(request);
     return true;
+    } else{
+        return false;
+    }
 }
 
 void PinWindow::doShit(QNetworkReply *raplu) {
     response_data = raplu->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
-    QString book;
     QJsonObject json_obj = json_array[0].toObject();
     qDebug() << json_obj["clientName"].toString();
 }
+*/
