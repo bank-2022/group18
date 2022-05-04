@@ -48,6 +48,8 @@ void PinWindow::numberPressed()
 
     newNumber = QString::number(Number);
 
+    if(newNumber.size() > 4) return;
+
     ui->label2->setText(newNumber);
 }
 

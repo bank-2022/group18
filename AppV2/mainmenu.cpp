@@ -1,6 +1,5 @@
 #include "mainmenu.h"
 #include "ui_mainmenu.h"
-#include "varmistus.h"
 #include "saldo.h"
 #include "nosto.h"
 #include "tilitapahtumat.h"
@@ -37,13 +36,5 @@ void MainMenu::on_pushButton_clicked()
     Saldo *saldo = new Saldo;
     saldo->show();
     this->close();
-}
-
-
-
-void MainMenu::on_lopeta_clicked()
-{
-    Varmistus *varmistus = new Varmistus;
-    varmistus->show();
 }
 

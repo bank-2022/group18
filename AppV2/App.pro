@@ -15,8 +15,7 @@ SOURCES += \
     nosto.cpp \
     pinwindow.cpp \
     saldo.cpp \
-    tilitapahtumat.cpp \
-    varmistus.cpp
+    tilitapahtumat.cpp
 
 HEADERS += \
     card.h \
@@ -24,8 +23,7 @@ HEADERS += \
     nosto.h \
     pinwindow.h \
     saldo.h \
-    tilitapahtumat.h \
-    varmistus.h
+    tilitapahtumat.h
 
 FORMS += \
     card.ui \
@@ -33,8 +31,7 @@ FORMS += \
     nosto.ui \
     pinwindow.ui \
     saldo.ui \
-    tilitapahtumat.ui \
-    varmistus.ui
+    tilitapahtumat.ui
 
 TRANSLATIONS += \
     App_fi_FI.ts

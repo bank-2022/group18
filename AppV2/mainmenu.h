@@ -22,8 +22,6 @@ private slots:
 
     void on_pushButton_clicked();
 
-    void on_lopeta_clicked();
-
 private:
     Ui::MainMenu *ui;
 };
