@@ -70,7 +70,7 @@ void PinWindow::on_ok_clicked()
     MainMenu *mmain = new MainMenu();
     mmain->show();
     this->close();
-    QString site_url="http://localhost:3000/clients/";
+    QString site_url="http://localhost:3000/clients/1";
 
     qDebug() << site_url;
 
