@@ -1,0 +1,16 @@
+release/card.o
+release/main.o
+release/mainmenu.o
+release/nosto.o
+release/pinwindow.o
+release/saldo.o
+release/tilitapahtumat.o
+release/varmistus.o
+release/qrc_qmake_qmake_qm_files.o
+release/moc_card.o
+release/moc_mainmenu.o
+release/moc_nosto.o
+release/moc_pinwindow.o
+release/moc_saldo.o
+release/moc_tilitapahtumat.o
+release/moc_varmistus.o
