@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     }
 
     Card w;
-    w.restIsPinCorrect("1", "1221");
+    //w.restIsPinCorrect("1", "1221");
     w.show();
     return a.exec();
 }

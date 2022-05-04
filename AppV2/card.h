@@ -17,19 +17,19 @@ class Card : public QMainWindow
 public:
     Card(QWidget *parent = nullptr);
     ~Card();
-    bool restIsPinCorrect(QString id, QString pin);
+    //bool restIsPinCorrect(QString id, QString pin);
 
 public slots:
     void funfun();
 
-private slots:
-    void doShit(QNetworkReply *raplu);
+//private slots:
+    //void doShit(QNetworkReply *raplu);
 
 private:
     Ui::Card *ui;
-    QNetworkAccessManager *getManager;
-    QNetworkReply *raplu;
-    QByteArray response_data;
+    //QNetworkAccessManager *getManager;
+    //QNetworkReply *raplu;
+    //QByteArray response_data;
 
 };
 #endif // CARD_H

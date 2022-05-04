@@ -29,7 +29,7 @@ void Card::funfun() {
     pindow->show();
     this->close();
 }
-
+/*
 bool Card::restIsPinCorrect(QString id, QString pin) {
 
     QString site_url="http://localhost:3000/clients/" + id;
@@ -51,4 +51,4 @@ void Card::doShit(QNetworkReply *raplu) {
     QJsonObject json_obj = json_array[0].toObject();
     qDebug() << json_obj["clientName"].toString();
 }
-
+*/

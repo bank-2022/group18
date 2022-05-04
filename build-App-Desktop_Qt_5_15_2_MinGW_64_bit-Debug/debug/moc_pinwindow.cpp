@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_PinWindow_t {
-    QByteArrayData data[6];
-    char stringdata0[66];
+    QByteArrayData data[9];
+    char stringdata0[94];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,11 +37,15 @@ QT_MOC_LITERAL(1, 10, 13), // "numberPressed"
 QT_MOC_LITERAL(2, 24, 0), // ""
 QT_MOC_LITERAL(3, 25, 6), // "remove"
 QT_MOC_LITERAL(4, 32, 13), // "on_ok_clicked"
-QT_MOC_LITERAL(5, 46, 19) // "on_takaisin_clicked"
+QT_MOC_LITERAL(5, 46, 19), // "on_takaisin_clicked"
+QT_MOC_LITERAL(6, 66, 6), // "doShit"
+QT_MOC_LITERAL(7, 73, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(8, 88, 5) // "raplu"
 
     },
     "PinWindow\0numberPressed\0\0remove\0"
-    "on_ok_clicked\0on_takaisin_clicked"
+    "on_ok_clicked\0on_takaisin_clicked\0"
+    "doShit\0QNetworkReply*\0raplu"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +55,7 @@ static const uint qt_meta_data_PinWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,16 +63,18 @@ static const uint qt_meta_data_PinWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x08 /* Private */,
-       3,    0,   35,    2, 0x08 /* Private */,
-       4,    0,   36,    2, 0x08 /* Private */,
-       5,    0,   37,    2, 0x08 /* Private */,
+       1,    0,   39,    2, 0x08 /* Private */,
+       3,    0,   40,    2, 0x08 /* Private */,
+       4,    0,   41,    2, 0x08 /* Private */,
+       5,    0,   42,    2, 0x08 /* Private */,
+       6,    1,   43,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 7,    8,
 
        0        // eod
 };
@@ -83,10 +89,10 @@ void PinWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 1: _t->remove(); break;
         case 2: _t->on_ok_clicked(); break;
         case 3: _t->on_takaisin_clicked(); break;
+        case 4: _t->doShit((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject PinWindow::staticMetaObject = { {
@@ -118,13 +124,13 @@ int PinWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }

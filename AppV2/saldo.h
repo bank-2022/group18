@@ -18,6 +18,8 @@ public:
 private slots:
     void on_takaisin2_clicked();
 
+    void tiedot(short id);
+
 private:
     Ui::Saldo *ui;
 };

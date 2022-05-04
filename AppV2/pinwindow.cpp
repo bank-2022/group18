@@ -68,23 +68,14 @@ void PinWindow::on_ok_clicked()
     MainMenu *mmain = new MainMenu();
     mmain->show();
     this->close();
-
-}
-/*
-bool PinWindow::restIsPinCorrect(QString id, QString pin) {
-
-    QString site_url="http://localhost:3000/clients/" + id;
+    QString site_url="http://localhost:3000/clients/";
 
     qDebug() << site_url;
-    if (pin == true){
+
     QNetworkRequest request((site_url));
     getManager = new QNetworkAccessManager(this);
     connect(getManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(doShit(QNetworkReply*)));
     raplu = getManager->get(request);
-    return true;
-    } else{
-        return false;
-    }
 }
 
 void PinWindow::doShit(QNetworkReply *raplu) {
@@ -94,4 +85,4 @@ void PinWindow::doShit(QNetworkReply *raplu) {
     QJsonObject json_obj = json_array[0].toObject();
     qDebug() << json_obj["clientName"].toString();
 }
-*/
+
